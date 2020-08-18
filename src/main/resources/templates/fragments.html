@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Marketplace Metrics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav th:fragment="header">
+        <h1 th:text="${title}">Marketplace Metrics</h1>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/bought">Items Bought</a></li>
+            <li class="nav-item"><a class="nav-link" href="/sold">Items Sold</a></li>
+            <li class="nav-item"><a class="nav-link" href="/inventory">All Inventory</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

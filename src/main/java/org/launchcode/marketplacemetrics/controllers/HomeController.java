@@ -1,16 +1,18 @@
 package org.launchcode.marketplacemetrics.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
 
-    @GetMapping
-    @ResponseBody
-    public String home() {
-        return "Welcome to the home page";
+    @RequestMapping("")
+    public String index(Model model) {
+        model.addAttribute("title", "Marketplace Metrics");
+        return "index";
     }
 
 }
