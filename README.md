@@ -1,7 +1,7 @@
 # marketplace-metrics
 LiftOff Capstone Project
 
-# Overview
+## Overview
 For individuals who use Facebook Marketplace as an avenue to buy and sell goods, Marketplace Metrics allows you to track your total cash flow for inventory traded on the platform.
 
 ## Features
