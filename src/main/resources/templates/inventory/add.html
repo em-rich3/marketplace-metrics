@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header">Add Inventory</header>
+
+<form method="post">
+    <div class="form-group">
+        <label>Item Name
+            <input type="text" name="name" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Price
+            <input type="text" name="price" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Category
+            <select name="category" class="form-control">
+                <option value="bought">Bought</option>
+                <option value="sold">Sold</option>
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Item" class="btn btn-success">
+    </div>
+</form>
+
+
+</body>
+</html>
