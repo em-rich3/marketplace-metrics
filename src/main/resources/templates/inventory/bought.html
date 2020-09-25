@@ -3,8 +3,23 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<header th:replace="fragments :: header">All Inventory</header>
 
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Category</th>
+
+    </tr>
+    </thead>
+    <tr th:each="item : ${inventory}" th:if="${item.category}=='bought'">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.category}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

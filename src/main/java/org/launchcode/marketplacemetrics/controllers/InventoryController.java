@@ -20,12 +20,14 @@ private static List<Inventory> inventory = new ArrayList<>();
     @RequestMapping("bought")
     public String bought(Model model) {
         model.addAttribute("title", "Items Bought");
+        model.addAttribute("inventory", inventory);
         return "inventory/bought";
     }
 
     @RequestMapping("sold")
     public String sold(Model model) {
         model.addAttribute("title", "Items Sold");
+        model.addAttribute("inventory", inventory);
         return "inventory/sold";
     }
 
