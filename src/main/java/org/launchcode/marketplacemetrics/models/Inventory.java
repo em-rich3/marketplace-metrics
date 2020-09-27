@@ -1,22 +1,20 @@
 package org.launchcode.marketplacemetrics.models;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class Inventory {
 
     private int id;
-    private static int nextId = 1;
+    public static int nextId = 1;
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     private String name;
 
     @NotNull(message = "Price is required.")
-    @Digits(integer=10, fraction = 2, message = "Price must be a number.")
+    @DecimalMin(value = "0.00", message = "Price must be 0.00 or greater")
+    @Digits(integer=10, fraction = 2, message = "Price must be between 0 and 1,000,000,000 with a maximum of 2 decimal places.")
     private BigDecimal price;
 
     @NotNull(message = "Please select a category.")
@@ -31,7 +29,6 @@ public class Inventory {
 
     public Inventory() {
         this.id = nextId;
-        nextId++;
     }
 
     public String getName() {

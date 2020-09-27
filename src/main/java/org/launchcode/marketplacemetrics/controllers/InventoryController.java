@@ -15,6 +15,12 @@ import java.util.List;
 @RequestMapping("inventory")
 public class InventoryController {
 
+    @RequestMapping("")
+    public String index(Model model) {
+        return "redirect:all";
+    }
+
+
     @RequestMapping("bought")
     public String bought(Model model) {
         model.addAttribute("title", "Items Bought");
@@ -50,7 +56,8 @@ public class InventoryController {
             return "inventory/add";
         }
         InventoryData.add(newInventory);
-        return "redirect:/inventory/all";
+        Inventory.nextId++;
+        return "redirect:all";
     }
 
     @GetMapping("delete")
