@@ -21,8 +21,10 @@
     <div class="form-group">
         <label>Category
             <select th:field="${inventory.category}" class="form-control">
-                <option value="bought">Bought</option>
-                <option value="sold">Sold</option>
+                <option th:each="category : ${categories}"
+                    th:value="${category}"
+                    th:text="${category.displayName}"
+                ></option>
             </select>
         </label>
         <p class="error" th:errors="${inventory.category}"></p>

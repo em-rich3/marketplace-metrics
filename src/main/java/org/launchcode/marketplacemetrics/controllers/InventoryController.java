@@ -2,6 +2,7 @@ package org.launchcode.marketplacemetrics.controllers;
 
 import org.launchcode.marketplacemetrics.data.InventoryData;
 import org.launchcode.marketplacemetrics.models.Inventory;
+import org.launchcode.marketplacemetrics.models.InventoryCategory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -46,6 +47,7 @@ public class InventoryController {
     public String addInventory(Model model) {
         model.addAttribute("title", "Add Item");
         model.addAttribute(new Inventory());
+        model.addAttribute("categories", InventoryCategory.values());
         return "inventory/add";
     }
 

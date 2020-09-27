@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header">All Inventory</header>
+<header th:replace="fragments :: header">Inventory Bought</header>
 
 <table class="table table-striped">
     <thead>
@@ -15,11 +15,11 @@
 
     </tr>
     </thead>
-    <tr th:each="item : ${inventory}" th:if="${item.category}=='bought'">
+    <tr th:each="item : ${inventory}" th:if="${item.category.displayName}=='Bought'">
         <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.price}"></td>
-        <td th:text="${item.category}"></td>
+        <td th:text="${item.category.displayName}"></td>
     </tr>
 </table>
 

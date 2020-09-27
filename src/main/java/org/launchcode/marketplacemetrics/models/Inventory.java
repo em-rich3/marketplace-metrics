@@ -18,9 +18,9 @@ public class Inventory {
     private BigDecimal price;
 
     @NotNull(message = "Please select a category.")
-    private String category;
+    private InventoryCategory category;
 
-    public Inventory(String name, BigDecimal price, String category) {
+    public Inventory(String name, BigDecimal price, InventoryCategory category) {
         this();
         this.name = name;
         this.price = price;
@@ -47,11 +47,11 @@ public class Inventory {
         this.price = price;
     }
 
-    public String getCategory() {
+    public InventoryCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(InventoryCategory category) {
         this.category = category;
     }
 
