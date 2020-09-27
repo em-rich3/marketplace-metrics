@@ -1,5 +1,6 @@
 package org.launchcode.marketplacemetrics.controllers;
 
+import org.launchcode.marketplacemetrics.data.InventoryData;
 import org.launchcode.marketplacemetrics.models.Inventory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,26 +16,24 @@ import java.util.List;
 @RequestMapping("inventory")
 public class InventoryController {
 
-private static List<Inventory> inventory = new ArrayList<>();
-
     @RequestMapping("bought")
     public String bought(Model model) {
         model.addAttribute("title", "Items Bought");
-        model.addAttribute("inventory", inventory);
+        model.addAttribute("inventory", InventoryData.getAll());
         return "inventory/bought";
     }
 
     @RequestMapping("sold")
     public String sold(Model model) {
         model.addAttribute("title", "Items Sold");
-        model.addAttribute("inventory", inventory);
+        model.addAttribute("inventory", InventoryData.getAll());
         return "inventory/sold";
     }
 
     @RequestMapping("all")
     public String allInventory(Model model) {
         model.addAttribute("title", "All Inventory");
-        model.addAttribute("inventory", inventory);
+        model.addAttribute("inventory", InventoryData.getAll());
         return "inventory/index";
     }
 
@@ -46,7 +45,7 @@ private static List<Inventory> inventory = new ArrayList<>();
 
     @PostMapping("add")
     public String processAddInventoryForm(@RequestParam String name, @RequestParam Integer price, @RequestParam String category) {
-        inventory.add(new Inventory(name, price, category));
+        InventoryData.add(new Inventory(name, price, category));
         return "redirect:/inventory/all";
     }
 }
