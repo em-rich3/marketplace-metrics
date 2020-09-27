@@ -1,7 +1,5 @@
 package org.launchcode.marketplacemetrics.models;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,8 +11,8 @@ public class Inventory {
     private int id;
     private static int nextId = 1;
 
-    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     @NotBlank(message = "Name is required.")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     private String name;
 
     @NotNull(message = "Price is required.")
@@ -25,17 +23,23 @@ public class Inventory {
     private String category;
 
     public Inventory(String name, BigDecimal price, String category) {
+        this();
         this.name = name;
         this.price = price;
         this.category = category;
+    }
+
+    public Inventory() {
         this.id = nextId;
         nextId++;
     }
 
-    public Inventory() {}
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getPrice() {
