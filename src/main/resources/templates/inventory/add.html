@@ -8,21 +8,24 @@
 <form method="post" action="/inventory/add">
     <div class="form-group">
         <label>Item Name
-            <input type="text" name="name" class="form-control">
+            <input th:field="${inventory.name}" class="form-control">
         </label>
+        <p class="error" th:errors="${inventory.name}"></p>
     </div>
     <div class="form-group">
         <label>Price
-            <input type="text" name="price" class="form-control">
+            <input type="number" th:field="${inventory.price}" class="form-control">
         </label>
+        <p class="error" th:errors="${inventory.price}"></p>
     </div>
     <div class="form-group">
         <label>Category
-            <select name="category" class="form-control">
+            <select th:field="${inventory.category}" class="form-control">
                 <option value="bought">Bought</option>
                 <option value="sold">Sold</option>
             </select>
         </label>
+        <p class="error" th:errors="${inventory.category}"></p>
     </div>
     <div class="form-group">
         <input type="submit" value="Add Item" class="btn btn-success">

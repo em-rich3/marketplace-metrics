@@ -4,11 +4,10 @@ import org.launchcode.marketplacemetrics.data.InventoryData;
 import org.launchcode.marketplacemetrics.models.Inventory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +39,17 @@ public class InventoryController {
     @GetMapping("add")
     public String addInventory(Model model) {
         model.addAttribute("title", "Add Item");
+        model.addAttribute(new Inventory());
         return "inventory/add";
     }
 
     @PostMapping("add")
-    public String processAddInventoryForm(@RequestParam String name, @RequestParam Integer price, @RequestParam String category) {
-        InventoryData.add(new Inventory(name, price, category));
+    public String processAddInventoryForm(@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Add Item");
+            return "inventory/add";
+        }
+        InventoryData.add(newInventory);
         return "redirect:/inventory/all";
     }
 

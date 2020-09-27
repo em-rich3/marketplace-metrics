@@ -1,15 +1,30 @@
 package org.launchcode.marketplacemetrics.models;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.math.BigDecimal;
+
 public class Inventory {
 
     private int id;
     private static int nextId = 1;
 
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
+    @NotBlank(message = "Name is required.")
     private String name;
-    private Integer price;
+
+    @NotNull(message = "Price is required.")
+    @Digits(integer=10, fraction = 2, message = "Price must be a number.")
+    private BigDecimal price;
+
+    @NotNull(message = "Please select a category.")
     private String category;
 
-    public Inventory(String name, Integer price, String category) {
+    public Inventory(String name, BigDecimal price, String category) {
         this.name = name;
         this.price = price;
         this.category = category;
@@ -17,19 +32,17 @@ public class Inventory {
         nextId++;
     }
 
+    public Inventory() {}
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
