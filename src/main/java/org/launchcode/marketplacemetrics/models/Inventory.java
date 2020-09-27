@@ -1,17 +1,11 @@
 package org.launchcode.marketplacemetrics.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Inventory {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Inventory extends AbstractEntity {
 
 
     @NotBlank(message = "Name is required.")
@@ -20,7 +14,7 @@ public class Inventory {
 
     @NotNull(message = "Price is required.")
     @DecimalMin(value = "0.00", message = "Price must be 0.00 or greater")
-    @Digits(integer=10, fraction = 2, message = "Price must be between 0 and 1,000,000,000 with a maximum of 2 decimal places.")
+    @Digits(integer = 10, fraction = 2, message = "Price must be between 0 and 1,000,000,000 with a maximum of 2 decimal places.")
     private BigDecimal price;
 
     @NotNull(message = "Please select a category.")
@@ -32,7 +26,8 @@ public class Inventory {
         this.category = category;
     }
 
-    public Inventory() { }
+    public Inventory() {
+    }
 
     public String getName() {
         return name;
@@ -58,9 +53,6 @@ public class Inventory {
         this.category = category;
     }
 
-    public int getId() {
-        return id;
-    }
 
     @Override
     public String toString() {
@@ -70,19 +62,5 @@ public class Inventory {
                 ", category='" + category + '\'' +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Inventory inventory = (Inventory) o;
-
-        return id == inventory.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
 }
+
