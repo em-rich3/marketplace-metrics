@@ -8,6 +8,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Item Name</th>
             <th>Price</th>
             <th>Category</th>
@@ -15,6 +16,7 @@
         </tr>
     </thead>
     <tr th:each="item : ${inventory}">
+        <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.price}"></td>
         <td th:text="${item.category}"></td>

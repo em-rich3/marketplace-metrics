@@ -2,6 +2,9 @@ package org.launchcode.marketplacemetrics.models;
 
 public class Inventory {
 
+    private int id;
+    private static int nextId = 1;
+
     private String name;
     private Integer price;
     private String category;
@@ -10,6 +13,8 @@ public class Inventory {
         this.name = name;
         this.price = price;
         this.category = category;
+        this.id = nextId;
+        nextId++;
     }
 
     public String getName() {
@@ -34,6 +39,10 @@ public class Inventory {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
