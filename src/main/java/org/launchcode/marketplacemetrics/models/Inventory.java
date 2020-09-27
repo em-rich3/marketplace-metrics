@@ -53,4 +53,19 @@ public class Inventory {
                 ", category='" + category + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Inventory inventory = (Inventory) o;
+
+        return id == inventory.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }
