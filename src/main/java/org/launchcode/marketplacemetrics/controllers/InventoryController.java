@@ -1,20 +1,22 @@
 package org.launchcode.marketplacemetrics.controllers;
 
-import org.launchcode.marketplacemetrics.data.InventoryData;
+import org.launchcode.marketplacemetrics.data.InventoryRepository;
 import org.launchcode.marketplacemetrics.models.Inventory;
 import org.launchcode.marketplacemetrics.models.InventoryCategory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("inventory")
 public class InventoryController {
+
+    @Autowired
+    private InventoryRepository inventoryRepository;
 
     @RequestMapping("")
     public String index(Model model) {
@@ -25,21 +27,21 @@ public class InventoryController {
     @RequestMapping("bought")
     public String bought(Model model) {
         model.addAttribute("title", "Items Bought");
-        model.addAttribute("inventory", InventoryData.getAll());
+        model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/bought";
     }
 
     @RequestMapping("sold")
     public String sold(Model model) {
         model.addAttribute("title", "Items Sold");
-        model.addAttribute("inventory", InventoryData.getAll());
+        model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/sold";
     }
 
     @RequestMapping("all")
     public String allInventory(Model model) {
         model.addAttribute("title", "All Inventory");
-        model.addAttribute("inventory", InventoryData.getAll());
+        model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/index";
     }
 
@@ -57,14 +59,14 @@ public class InventoryController {
             model.addAttribute("title", "Add Item");
             return "inventory/add";
         }
-        InventoryData.add(newInventory);
+        inventoryRepository.save(newInventory);
         return "redirect:all";
     }
 
     @GetMapping("delete")
     public String displayDeleteInventoryForm(Model model) {
         model.addAttribute("title", "Delete Inventory");
-        model.addAttribute("inventory", InventoryData.getAll());
+        model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/delete";
     }
 
@@ -72,7 +74,7 @@ public class InventoryController {
     public String processDeleteInventoryForm(@RequestParam(required=false) int[] itemIds) {
         if (itemIds != null) {
             for (int id : itemIds) {
-                InventoryData.remove(id);
+                inventoryRepository.deleteById(id);
             }
         }
 
