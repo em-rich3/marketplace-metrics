@@ -58,7 +58,6 @@ public class InventoryController {
             return "inventory/add";
         }
         InventoryData.add(newInventory);
-        Inventory.nextId++;
         return "redirect:all";
     }
 

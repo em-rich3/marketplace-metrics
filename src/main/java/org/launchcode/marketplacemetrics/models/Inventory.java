@@ -1,12 +1,18 @@
 package org.launchcode.marketplacemetrics.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
+@Entity
 public class Inventory {
 
+    @Id
+    @GeneratedValue
     private int id;
-    public static int nextId = 1;
+
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
@@ -21,15 +27,12 @@ public class Inventory {
     private InventoryCategory category;
 
     public Inventory(String name, BigDecimal price, InventoryCategory category) {
-        this();
         this.name = name;
         this.price = price;
         this.category = category;
     }
 
-    public Inventory() {
-        this.id = nextId;
-    }
+    public Inventory() { }
 
     public String getName() {
         return name;
