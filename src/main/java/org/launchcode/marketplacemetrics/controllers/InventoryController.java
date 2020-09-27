@@ -48,4 +48,22 @@ public class InventoryController {
         InventoryData.add(new Inventory(name, price, category));
         return "redirect:/inventory/all";
     }
+
+    @GetMapping("delete")
+    public String displayDeleteInventoryForm(Model model) {
+        model.addAttribute("title", "Delete Inventory");
+        model.addAttribute("inventory", InventoryData.getAll());
+        return "inventory/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteInventoryForm(@RequestParam(required=false) int[] itemIds) {
+        if (itemIds != null) {
+            for (int id : itemIds) {
+                InventoryData.remove(id);
+            }
+        }
+
+        return "redirect:/inventory/all";
+    }
 }
