@@ -26,28 +26,28 @@ public class InventoryController {
 
     @RequestMapping("bought")
     public String bought(Model model) {
-        model.addAttribute("title", "Items Bought");
+        model.addAttribute("title", "Marketplace Metrics");
         model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/bought";
     }
 
     @RequestMapping("sold")
     public String sold(Model model) {
-        model.addAttribute("title", "Items Sold");
+        model.addAttribute("title", "Marketplace Metrics");
         model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/sold";
     }
 
     @RequestMapping("all")
     public String allInventory(Model model) {
-        model.addAttribute("title", "All Inventory");
+        model.addAttribute("title", "Marketplace Metrics");
         model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/index";
     }
 
     @GetMapping("add")
     public String addInventory(Model model) {
-        model.addAttribute("title", "Add Item");
+        model.addAttribute("title", "Marketplace Metrics");
         model.addAttribute(new Inventory());
         model.addAttribute("categories", InventoryCategory.values());
         return "inventory/add";
@@ -56,7 +56,7 @@ public class InventoryController {
     @PostMapping("add")
     public String processAddInventoryForm(@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model) {
         if(errors.hasErrors()) {
-            model.addAttribute("title", "Add Item");
+            model.addAttribute("title", "Marketplace Metrics");
             return "inventory/add";
         }
         inventoryRepository.save(newInventory);

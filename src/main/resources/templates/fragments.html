@@ -8,15 +8,15 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-    <nav th:fragment="header">
-        <h1 th:text="${title}">Marketplace Metrics</h1>
-        <ul class="nav">
+    <nav th:fragment="header" >
+        <h1 th:text="${title}" class="jumbotron text-center">Marketplace Metrics</h1>
+        <ul class="nav justify-content-center">
             <li class="nav-item"><a class="nav-link" href="/inventory/all">All Inventory</a></li>
             <li class="nav-item"><a class="nav-link" href="/inventory/add">Add Item</a></li>
             <li class="nav-item"><a class="nav-link" href="/inventory/sold">Items Sold</a></li>
             <li class="nav-item"><a class="nav-link" href="/inventory/bought">Items Bought</a></li>
             <li class="nav-item"><a class="nav-link" href="/inventory/delete">Delete Inventory</a></li>
-
+            <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
         </ul>
     </nav>
 </body>

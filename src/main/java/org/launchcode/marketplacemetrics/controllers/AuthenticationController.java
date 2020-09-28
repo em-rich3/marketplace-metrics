@@ -47,7 +47,7 @@ public class AuthenticationController {
     @GetMapping("register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
-        model.addAttribute("title", "Register");
+        model.addAttribute("title", "Marketplace Metrics");
         return "register";
     }
 
@@ -57,7 +57,7 @@ public class AuthenticationController {
                                           Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Register");
+            model.addAttribute("title", "Marketplace Metrics");
             return "register";
         }
 
@@ -65,7 +65,7 @@ public class AuthenticationController {
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-            model.addAttribute("title", "Register");
+            model.addAttribute("title", "Marketplace Metrics");
             return "register";
         }
 
@@ -73,7 +73,7 @@ public class AuthenticationController {
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Register");
+            model.addAttribute("title", "Marketplace Metrics");
             return "register";
         }
 
@@ -87,7 +87,7 @@ public class AuthenticationController {
     @GetMapping("login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Log In");
+        model.addAttribute("title", "Marketplace Metrics");
         return "login";
     }
 
@@ -97,7 +97,7 @@ public class AuthenticationController {
                                    Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Log In");
+            model.addAttribute("title", "Marketplace Metrics");
             return "login";
         }
 
@@ -105,7 +105,7 @@ public class AuthenticationController {
 
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
-            model.addAttribute("title", "Log In");
+            model.addAttribute("title", "Marketplace Metrics");
             return "login";
         }
 
@@ -113,12 +113,18 @@ public class AuthenticationController {
 
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
-            model.addAttribute("title", "Log In");
+            model.addAttribute("title", "Marketplace Metrics");
             return "login";
         }
 
         setUserInSession(request.getSession(), theUser);
 
         return "redirect:";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login";
     }
 }

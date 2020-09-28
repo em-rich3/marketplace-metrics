@@ -3,29 +3,33 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<h1 th:text="${title}" class="jumbotron text-center">Marketplace Metrics</h1>
+
+<h2>Register</h2><br>
 
 <form method="post">
     <div class="form-group">
-        <label>Username
-            <input class="form-control" th:field="${registerFormDTO.username}" />
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.username}" placeholder="Username" />
         </label>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
     <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" placeholder="Password" />
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </div>
     <div class="form-group">
-        <label>Verify Password
-            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="Verify Password" />
         </label>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Register" />
 </form>
+<br>
+<p>Already have an account? <a href="/login">Login here.</a></p>
 
 </body>
 </html>
