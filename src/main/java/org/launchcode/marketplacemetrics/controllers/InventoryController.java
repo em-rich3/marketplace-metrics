@@ -65,7 +65,7 @@ public class InventoryController {
 
     @GetMapping("delete")
     public String displayDeleteInventoryForm(Model model) {
-        model.addAttribute("title", "Delete Inventory");
+        model.addAttribute("title", "Marketplace Metrics");
         model.addAttribute("inventory", inventoryRepository.findAll());
         return "inventory/delete";
     }

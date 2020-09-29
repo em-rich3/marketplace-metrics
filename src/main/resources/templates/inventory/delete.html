@@ -5,20 +5,22 @@
 
 <header th:replace="fragments :: header">Delete Inventory</header>
 
-<form method="post">
+<form method="post" class="col-lg-6 offset-lg-3">
 
 
     <th:block th:each="item : ${inventory}">
-        <div class="form-group">
+        <div class="form-control">
         <label>
             <span th:text="${item.name}"></span>
-            <input type="checkbox" name="itemIds" th:value="${item.id}" class="form-control">
+            <input type="checkbox" name="itemIds" th:value="${item.id}" class="form-horizontal">
         </label>
         </div>
     </th:block>
+    <br>
 
-
-    <input type="submit" value="Delete" class="btn btn-danger">
+    <div class="row justify-content-center">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </div>
 </form>
 
 </body>
