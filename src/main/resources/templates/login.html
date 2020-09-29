@@ -5,26 +5,28 @@
 
 <h1 th:text="${title}" class="jumbotron text-center">Marketplace Metrics</h1>
 
-<h2>Login</h2><br>
+<h2 class="text-center">Login</h2><br>
 
-<form method="post">
-    <div class="form-group justify-content-center">
+<form method="post" class="col-lg-6 offset-lg-3">
+    <div class="row justify-content-center">
         <label th:for="username">
             <input class="form-control" th:field="${loginFormDTO.username}" placeholder="Username">
         </label>
         <p class="error" th:errors="${loginFormDTO.username}"></p>
     </div>
-    <div class="form-group">
+    <div class="row justify-content-center">
         <label>
             <input class="form-control" th:field="${loginFormDTO.password}" type="password" placeholder="Password">
         </label>
         <p class="error" th:errors="${loginFormDTO.password}"></p>
     </div>
-
+    <br>
+    <div class="row justify-content-center">
     <input type="submit" class="btn btn-primary" value="Log In" />
+    </div>
 </form>
 <br>
-<p>Don't have an account? <a href="/register">Register for one.</a></p>
+<p class="text-center">Don't have an account? <a href="/register">Register for one.</a></p>
 
 
 
