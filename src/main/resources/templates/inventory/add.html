@@ -12,12 +12,16 @@
         <label>Item Name
             <input th:field="${inventory.name}" class="form-control">
         </label>
+    </div>
+    <div class="row justify-content-center">
         <p class="error" th:errors="${inventory.name}"></p>
     </div>
     <div class="row justify-content-center">
         <label>Price
             <input th:field="${inventory.price}" class="form-control">
         </label>
+    </div>
+    <div class="row justify-content-center">
         <p class="error" th:errors="${inventory.price}"></p>
     </div>
     <div class="row justify-content-center">
@@ -29,6 +33,8 @@
                 ></option>
             </select>
         </label>
+    </div>
+    <div class="row justify-content-center">
         <p class="error" th:errors="${inventory.category}"></p>
     </div>
     <br>

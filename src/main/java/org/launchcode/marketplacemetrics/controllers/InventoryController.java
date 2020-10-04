@@ -57,6 +57,7 @@ public class InventoryController {
     public String processAddInventoryForm(@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Marketplace Metrics");
+            model.addAttribute("categories", InventoryCategory.values());
             return "inventory/add";
         }
         inventoryRepository.save(newInventory);
