@@ -15,7 +15,7 @@
 
     </tr>
     </thead>
-    <tr th:each="item : ${inventory}" th:if="${item.category.displayName}=='Sold'">
+    <tr th:each="item : ${inventory}">
         <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.price}"></td>

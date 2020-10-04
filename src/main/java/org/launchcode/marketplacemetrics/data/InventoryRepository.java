@@ -1,10 +1,20 @@
 package org.launchcode.marketplacemetrics.data;
 
 import org.launchcode.marketplacemetrics.models.Inventory;
+import org.launchcode.marketplacemetrics.models.InventoryCategory;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface InventoryRepository extends CrudRepository<Inventory, Integer> {
+
+    @Query("SELECT i FROM Inventory i WHERE i.category = :category")
+    List<Inventory> findByCategory (@Param("category") InventoryCategory category);
+
+
 
 }

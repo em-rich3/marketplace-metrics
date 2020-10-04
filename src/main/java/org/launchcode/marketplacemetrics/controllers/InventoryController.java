@@ -27,14 +27,14 @@ public class InventoryController {
     @RequestMapping("bought")
     public String bought(Model model) {
         model.addAttribute("title", "Marketplace Metrics");
-        model.addAttribute("inventory", inventoryRepository.findAll());
+        model.addAttribute("inventory", inventoryRepository.findByCategory(InventoryCategory.BOUGHT));
         return "inventory/bought";
     }
 
     @RequestMapping("sold")
     public String sold(Model model) {
         model.addAttribute("title", "Marketplace Metrics");
-        model.addAttribute("inventory", inventoryRepository.findAll());
+        model.addAttribute("inventory", inventoryRepository.findByCategory(InventoryCategory.SOLD));
         return "inventory/sold";
     }
 
