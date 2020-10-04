@@ -5,8 +5,8 @@
 </head>
 <body class="container">
     <header th:replace="fragments :: header"></header>
-    <div class="row justify-content-center" style="position: relative; height:20vh; width:20vw">
-        <canvas id="myChart" width="400" height="400" class="row justify-content-center"></canvas>
+    <div class="row justify-content-center" style="position: relative; height:25vh; width:25vw; margin: 0 auto">
+        <canvas id="myChart" width="400" height="400" style="margin: 0 auto" class="row justify-content-center"></canvas>
         <script th:inline="javascript">
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -35,7 +35,8 @@
                             }
                         }]
                     },
-                    legend: {display:false}
+                    legend: {display:false},
+
                 }
             });
         </script>

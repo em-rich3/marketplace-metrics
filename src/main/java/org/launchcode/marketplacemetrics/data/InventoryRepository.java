@@ -1,6 +1,5 @@
 package org.launchcode.marketplacemetrics.data;
 
-import org.launchcode.marketplacemetrics.models.CashFlow;
 import org.launchcode.marketplacemetrics.models.Inventory;
 import org.launchcode.marketplacemetrics.models.InventoryCategory;
 import org.springframework.data.jpa.repository.Query;
