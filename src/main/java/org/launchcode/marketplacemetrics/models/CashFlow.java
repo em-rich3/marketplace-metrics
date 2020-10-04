@@ -14,5 +14,27 @@ public class CashFlow {
         this.totalSold = totalSold;
     }
 
+    public BigDecimal getCashFlow() {
+        return cashFlow;
+    }
 
+    public void setCashFlow(BigDecimal cashFlow) {
+        this.cashFlow = cashFlow;
+    }
+
+    public BigDecimal getTotalBought() {
+        return totalBought;
+    }
+
+    public void setTotalBought(BigDecimal totalBought) {
+        this.totalBought = totalBought;
+    }
+
+    public BigDecimal getTotalSold() {
+        return totalSold;
+    }
+
+    public void setTotalSold(BigDecimal totalSold) {
+        this.totalSold = totalSold;
+    }
 }

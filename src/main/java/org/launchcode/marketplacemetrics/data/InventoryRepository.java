@@ -19,7 +19,7 @@ public interface InventoryRepository extends CrudRepository<Inventory, Integer> 
     @Query(value = "select (sold.total - bought.total) as cashFlow, bought.total as totalBought, sold.total as totalSold from (" +
             "select SUM(i.price) as total, 1 as id from Inventory i group by i.category having i.category = 0) bought inner join " +
             "(select SUM(i.price) as total, 1 as id from Inventory i group by i.category having i.category = 1) sold on bought.id = sold.id", nativeQuery = true)
-    List<CashFlow> getCashFlow();
+    List<Object[]> getCashFlow();
 
 
 
