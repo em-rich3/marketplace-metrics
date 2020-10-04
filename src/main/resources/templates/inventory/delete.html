@@ -11,8 +11,8 @@
     <th:block th:each="item : ${inventory}">
         <div class="form-control">
         <label>
-            <span th:text="${item.name}"></span>
             <input type="checkbox" name="itemIds" th:value="${item.id}" class="form-horizontal">
+            <span th:text="${item.name}"></span>
         </label>
         </div>
     </th:block>
