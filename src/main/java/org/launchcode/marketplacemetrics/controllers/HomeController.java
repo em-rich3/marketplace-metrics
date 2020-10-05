@@ -22,10 +22,12 @@ public class HomeController {
         model.addAttribute("title", "Marketplace Metrics");
         Map<String, BigDecimal> data = new LinkedHashMap<String, BigDecimal>();
         List<Object[]> cashFlowData = inventoryRepository.getCashFlow();
-        Object[] flow = cashFlowData.get(0);
-        data.put("BOUGHT", (BigDecimal) flow[1]);
-        data.put("SOLD", (BigDecimal) flow[2]);
-        data.put("CASH FLOW", (BigDecimal) flow[0]);
+        if (!cashFlowData.isEmpty()) {
+            Object[] flow = cashFlowData.get(0);
+            data.put("BOUGHT", (BigDecimal) flow[1]);
+            data.put("SOLD", (BigDecimal) flow[2]);
+            data.put("CASH FLOW", (BigDecimal) flow[0]);
+        }
         model.addAttribute("data", data);
         return "index";
     }
