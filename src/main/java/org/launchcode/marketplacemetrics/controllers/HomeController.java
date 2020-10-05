@@ -20,7 +20,7 @@ public class HomeController {
     @RequestMapping("")
     public String index(Model model) {
         model.addAttribute("title", "Marketplace Metrics");
-        Map<String, BigDecimal> data = new LinkedHashMap<String, BigDecimal>();
+        Map<String, BigDecimal> data = new LinkedHashMap<>();
         List<Object[]> cashFlowData = inventoryRepository.getCashFlow();
         if (!cashFlowData.isEmpty()) {
             Object[] flow = cashFlowData.get(0);
@@ -28,6 +28,7 @@ public class HomeController {
             data.put("SOLD", (BigDecimal) flow[2]);
             data.put("CASH FLOW", (BigDecimal) flow[0]);
         }
+
         model.addAttribute("data", data);
         return "index";
     }
