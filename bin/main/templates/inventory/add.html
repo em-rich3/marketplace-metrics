@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header">Add Inventory</header>
+
+<!--<h2 class="text-center">Add Item</h2><br>-->
+
+<form method="post" action="/inventory/add" class="col-lg-6 offset-lg-3">
+    <div class="row justify-content-center">
+        <label>Item Name
+            <input th:field="${inventory.name}" class="form-control">
+        </label>
+    </div>
+    <div class="row justify-content-center">
+        <p class="error" th:errors="${inventory.name}"></p>
+    </div>
+    <div class="row justify-content-center">
+        <label>Price
+            <input th:field="${inventory.price}" class="form-control">
+        </label>
+    </div>
+    <div class="row justify-content-center">
+        <p class="error" th:errors="${inventory.price}"></p>
+    </div>
+    <div class="row justify-content-center">
+        <label>Category
+            <select th:field="${inventory.category}" class="form-control">
+                <option th:each="category : ${categories}"
+                    th:value="${category}"
+                    th:text="${category.displayName}"
+                ></option>
+            </select>
+        </label>
+    </div>
+    <div class="row justify-content-center">
+        <p class="error" th:errors="${inventory.category}"></p>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <input type="submit" value="Add Item" class="btn btn-success">
+    </div>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}" class="jumbotron text-center">Marketplace Metrics</h1>
+
+<h2 class="text-center">Register</h2><br>
+<form method="post" class="col-lg-6 offset-lg-3">
+    <div class="row justify-content-center">
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.username}" placeholder="Username" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.username}"></p>
+    </div>
+    <div class="row justify-content-center">
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" placeholder="Password" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.password}"></p>
+    </div>
+    <div class="row justify-content-center">
+        <label>
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="Verify Password" />
+        </label>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <input type="submit" class="btn btn-primary" value="Register" />
+    </div>
+
+</form>
+<br>
+<p class="text-center">Already have an account? <a href="/login">Login here.</a></p>
+
+</body>
+</html>
